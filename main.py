@@ -38,6 +38,6 @@ print(f"Salário {func.getNome()} - R${func.salarioLiquido(ano=2025, mes=1)}")
 print("-"*30)
 
 print("Questão 2")
-print(func.listarDependentes())
+func.listarDependentes()
 
 
