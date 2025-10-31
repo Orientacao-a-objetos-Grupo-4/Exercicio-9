@@ -76,6 +76,7 @@ class Funcionario(Pessoa):
         return salario_final
 
     def listarDependentes(self):
+        print("-= Dependentes =-")
         for dep in self.__dependentes:
             if date(day=dep.getDataNascimento().day , month=dep.getDataNascimento().month , year=date.today().year) < date.today():
                 proximo_aniversario = date(day=dep.getDataNascimento().day , month=dep.getDataNascimento().month , year=date.today().year + 1)
@@ -84,10 +85,10 @@ class Funcionario(Pessoa):
             dia_semana = ('Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sabado',
                           'Domingo')
             quantidade_dias = (proximo_aniversario - date.today()).days
-            print(f"Dependentes de {self.getNome()}\n"
-                f"{dep.getNome()} ({dep.getParentesco()}) - Data Nascimento: {dep.getDataNascimento().strftime('%d/%m/%Y')}\n"
+            print(f"{dep.getNome()} ({dep.getParentesco()}) - Data Nascimento: {dep.getDataNascimento().strftime('%d/%m/%Y')}\n"
                   f"Idade: {date.today().year - dep.getDataNascimento().year}\n"
                   f"Próximo Aniversário: {proximo_aniversario.strftime('%d/%m/%Y')}\n"
                   f"Quantos dias faltam: {quantidade_dias}\n"
-                  f"Dia da Semana: {dia_semana[proximo_aniversario.weekday()]}")
+                  f"Dia da Semana: {dia_semana[proximo_aniversario.weekday()]}\n")
+            print("-"*30)
 
