@@ -16,9 +16,10 @@ from Dependente import Dependente
 func = Funcionario()
 c1 = Cargo(id = 1,funcao="Zelador", salario_bruto=4000)
 oc1 = Ocorrencia(id = 2, data_ocorrencia=date(day=1, month=1, year=2025), valor_acrescimo=300, valor_desconto=500, descricao_ocorrencia="Impostos", funcionario=func)
-dep = Dependente(parentesco="Filho", nascimento=date(day=15, month=12, year=2000))
+dep = Dependente(parentesco="Filho", nascimento=date(day=15, month=12, year=2010))
+dep.setNome("Cleiton")
 
-
+func.setNome("Rafael")
 func.setEndereco("Av. Brasil, 45")
 func.setTelefone(32123456789)
 func.setEmail("email@gmail.com")
@@ -30,10 +31,11 @@ dia = date(day=10, month=5, year=2025)
 
 dataOcorrencia = oc1.getDataOcorrencia().strftime("%d/%m/%Y")
 
-print(dataOcorrencia)
-print(oc1.getDataOcorrencia())
-print(dep.getDataNascimento().year)
-print(date.today().year)
+# print(dataOcorrencia)
+# print(oc1.getDataOcorrencia())
+# print(dep.getDataNascimento().year)
+# print(date.today().year)
 print(func.salarioLiquido(ano=2025, mes=1))
+print(func.listarDependentes())
 
 
