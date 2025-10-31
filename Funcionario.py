@@ -1,4 +1,5 @@
 from Pessoa import Pessoa
+from datetime import date
 
 class Funcionario(Pessoa):
     def __init__(self):
@@ -40,8 +41,37 @@ class Funcionario(Pessoa):
     def setOcorrencias(self, ocorrencias):
         self.__ocorrencias = ocorrencias
 
+    def addOcorrencia(self, ocorrencia):
+        self.__ocorrencias.append(ocorrencia)
+
+    def removeOcorrencia(self, ocorrencia):
+        self.__ocorrencias.remove(ocorrencia)
+
     def getDependentes(self):
         return self.__dependentes
 
+    def addDependente(self, dependente):
+        self.__dependentes.append(dependente)
+
+    def removeDependente(self, dependente):
+        self.__dependentes.remove(dependente)
+
     def setDependentes(self, dependentes):
         self.__dependentes = dependentes
+
+    def salarioLiquido(self, ano, mes):
+        bruto = self.__cargo.getSalario_bruto()
+        salario_final = 0
+        for ocorrencia in self.__ocorrencias:
+            if ocorrencia.getDataOcorrencia().year == ano and ocorrencia.getDataOcorrencia().month == mes:
+                acrescimos = ocorrencia.getValorAcrescimo()
+                descontos = ocorrencia.getValorDesconto()
+                salario_final = bruto + acrescimos - descontos
+        acrescimo_dependente = 0
+        for dependente in self.__dependentes:
+            idade = date.today().year - dependente.getDataNascimento().year
+            if idade < 18:
+                acrescimo_dependente += 100
+        salario_final = salario_final + acrescimo_dependente
+        return salario_final
+
